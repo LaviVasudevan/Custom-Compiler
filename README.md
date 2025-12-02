@@ -55,55 +55,6 @@ gcc prac_parser.tab.c lex.yy.c -o compiler -lfl
 ./compiler input.txt
 ```
 
-**Output includes**:
-1. Token stream
-2. Syntax verification
-3. Three Address Code (TAC)
-4. Optimized TAC
-5. Target assembly code
-
-## Optimization Details
-
-### Constant Folding
-Evaluates constant expressions at compile time:
-- `5 + 3 * 9` → `32`
-
-### Strength Reduction
-Replaces expensive operations with cheaper equivalents:
-- `x * 2` → `x << 1` (left shift)
-- `x / 4` → `x >> 2` (right shift)
-
-### Algebraic Simplification
-Simplifies expressions with identity elements:
-- `x + 0` → `x`
-- `0 + x` → `x`
-
-## Technical Details
-
-- **TAC Limit**: 1000 instructions
-- **Name Length**: 50 characters maximum
-- **Intermediate Representation**: Three Address Code format
-- **Target Architecture**: Register-based assembly (simplified)
-
-## Limitations
-
-- Single-character operators only
-- Limited expression types
-- No function support
-- No loop constructs
-- No error recovery
-
-## Future Enhancements
-
-- [ ] Add more operators (-, /, >, <=, >=, ==, !=)
-- [ ] Implement loop constructs (while, for)
-- [ ] Add function declarations and calls
-- [ ] Implement copy propagation
-- [ ] Add dead code elimination
-- [ ] Support for arrays and pointers
-- [ ] Better error reporting with line numbers
-
-
 ## Compiler Output Stages
 
 1. **Tokenization**: Displays all tokens identified by the lexer
@@ -142,25 +93,6 @@ Simplifies expressions using mathematical identities:
 - **CMP**: Compare values
 - **JMP/JNZ**: Unconditional/conditional jumps
 - **SETL/SETG/SETLE/SETGE/SETE/SETNE**: Set flags for comparisons
-
-## Technical Details
-
-- **TAC Limit**: 1000 instructions
-- **Name Length**: 50 characters maximum
-- **Operator Precedence**: Follows standard C precedence rules
-  - `*`, `/` (highest)
-  - `+`, `-`
-  - `<`, `>`, `<=`, `>=`, `==`, `!=` (lowest)
-- **Memory Management**: Proper string allocation with `strdup()` and `free()`
-
-## Limitations
-
-- No function support (single scope only)
-- No loop constructs (while, for)
-- No else clauses for if statements
-- Integer arithmetic only
-- No arrays or pointers
-- Limited error recovery
 
 ## Build Artifacts
 
